@@ -15,6 +15,9 @@ inputs:
   branch:
     description: Branch of the repository (defaults to branch that triggered the build)
     required: false
+  steps:
+    description: list of steps composed with sqaaas-step-action
+    required: false
 outputs:
   report:
     description: 'JSON payload containing the full QA report'
@@ -24,3 +27,4 @@ runs:
   args:
     - ${{ inputs.repo }}
     - ${{ inputs.branch }}
+    - ${{ inputs.steps }}
