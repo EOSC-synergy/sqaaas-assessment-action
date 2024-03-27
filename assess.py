@@ -265,16 +265,24 @@ def get_repo_data():
 
 def get_custom_steps():
     custom_steps = {}
+    github_workspace = os.environ.get("GITHUB_WORKSPACE", "")
+    if github_workspace:
+        logger.debug("GITHUB_WORKSPACE defined: %s" % github_workspace)
+    else:
+        logger.warning(
+            "GITHUB_WORKSPACE variable not defined: using relative path to access to JSON payload for the step"
+        )
     # QC.Uni
     step_workflows = os.environ.get("INPUT_QC_UNI_STEPS", "")
     step_names = step_workflows.split()
     step_tools = []
     if step_workflows:
         for step_name in step_names:
-            _step_payload_file = step_name + ".json"
+            _step_payload_file = os.path.join(github_workspace, step_name + ".json")
             if not os.path.exists(_step_payload_file):
                 logger.error(
-                    "Aborting..step workflow definition not found: %s" % step_name
+                    "Aborting..step workflow definition not found: %s (file path: %s)"
+                    % (step_name, _step_payload_file)
                 )
                 sys.exit(2)
             logger.debug("Step workflow found: %s" % step_name)
