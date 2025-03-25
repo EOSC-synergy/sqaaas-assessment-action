@@ -19,6 +19,12 @@ inputs:
   qc_uni_steps:
     description: space-separated list of steps for unit testing (QC.Uni) quality criterion (composed with sqaaas-step-action)
     required: false
+  criteria_workflow_only:
+    description: true or false depending on whether you only want to trigger specified criteria workflow
+    required: false
+  explicit_criteria_workflow: 
+    description: use this to specify a payload  
+
 outputs:
   report:
     description: 'JSON payload containing the full QA report'
@@ -29,3 +35,5 @@ runs:
     - ${{ inputs.repo }}
     - ${{ inputs.branch }}
     - ${{ inputs.qc_uni_steps }}
+    - ${{ inputs.criteria_workflow_only}}
+    - ${{ inputs.explicit_criteria_workflow}}
