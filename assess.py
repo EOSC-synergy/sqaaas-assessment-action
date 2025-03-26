@@ -261,8 +261,13 @@ def get_repo_data():
                 branch = os.environ.get("GITHUB_REF_NAME", "")
 
     return (repo, branch)
-
-
+def get_criteria_only():
+    only_criteria = os.environ.get("INPUT_CRITERIA_WORKFLOW_ONLY","")
+    criteria_workflow = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
+    if only_criteria and criteria:
+        logger.info("Evaluating only especified criteria")
+        
+    return(only_criteria,criteria_workflow)
 def get_custom_steps():
     custom_steps = {}
     # QC.Uni
