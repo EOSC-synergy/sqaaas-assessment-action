@@ -80,7 +80,7 @@ def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria
         }
     }
     if criteria_only:
-        payload["criteria_workflow"]=criteria_workflow
+        payload["criteria_workflow"]=criteria_workflow["criteria_workflow"]
     if step_tools:
         for criterion, step_tools in step_tools.items():
             payload["criteria_workflow"] = [{"id": criterion, "tools": step_tools}]
