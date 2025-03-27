@@ -72,13 +72,15 @@ shields.io-based badge: {{ badge_results.badge_shields_md }}
 """
 
 
-def create_payload(repo, branch=None, step_tools=[]):
+def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria_workflow={}):
     payload = {
         "repo_code": {
             "repo": repo,
             "branch": branch,
         }
     }
+    if criteria_only:
+        payload["criteria_workflow"]=criteria_workflow
     if step_tools:
         for criterion, step_tools in step_tools.items():
             payload["criteria_workflow"] = [{"id": criterion, "tools": step_tools}]
@@ -123,9 +125,12 @@ def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria
     while keep_trying:
         logger.info(f"Performing {action} on pipeline {pipeline_id}")
         if action in ["create"]:
-            payload = json.loads(create_payload(repo, branch, step_tools))
+            payload = json.loads(create_payload(repo, branch, step_tools,only_criteria,criteria_workflow))
             logging.debug("Using payload: %s" % payload)
-            response = sqaaas_request("post", "pipeline/assessment", payload=payload)
+            if only_criteria:
+                response = sqaaas_request("post", "pipeline/assessment?run_criteria_workflow_only=True", payload=payload)
+            else:
+                response = sqaaas_request("post", "pipeline/assessment", payload=payload)
             response_data = response.json()
             pipeline_id = response_data["id"]
             action = "run"
@@ -313,7 +318,7 @@ def main():
     step_tools = get_custom_steps()
 
     # Run assessment
-    sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools)
+    sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
