@@ -266,7 +266,8 @@ def get_repo_data():
 def get_criteria_only():
     only_criteria = os.environ.get("INPUT_CRITERIA_WORKFLOW_ONLY","")
     criteria_workflow = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
-    crteria_workflow = ast.literal_eval(criteria_workflow)
+    print(str(criteria_workflow))
+    crteria_workflow = ast.literal_eval(str(criteria_workflow))
     if only_criteria and criteria_workflow:
         logger.info("Evaluating only especified criteria")
     else:
