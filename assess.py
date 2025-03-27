@@ -11,6 +11,7 @@ import time
 
 import jinja2
 import requests
+import ast
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger("sqaaas-assessment-action")
@@ -112,7 +113,7 @@ def sqaaas_request(method, path, payload={}):
         sys.exit(_error_code)
 
 
-def run_assessment(repo, branch=None, step_tools=[]):
+def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria_workflow= {}):
     pipeline_id = None
     action = "create"
     sqaaas_report_json = {}
@@ -261,13 +262,17 @@ def get_repo_data():
                 branch = os.environ.get("GITHUB_REF_NAME", "")
 
     return (repo, branch)
+    
 def get_criteria_only():
     only_criteria = os.environ.get("INPUT_CRITERIA_WORKFLOW_ONLY","")
     criteria_workflow = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
+    crteria_workflow = ast.literal_eval(criteria_workflow)
     if only_criteria and criteria_workflow:
         logger.info("Evaluating only especified criteria")
-        
+    else:
+       only_criteria,criteria_workflow= False, False    
     return(only_criteria,criteria_workflow)
+    
 def get_custom_steps():
     custom_steps = {}
     # QC.Uni
