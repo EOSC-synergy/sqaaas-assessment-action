@@ -322,7 +322,7 @@ def main():
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
-        if only criteria:
+        if only_criteria:
            print('t')
         else:
            summary = write_summary(sqaaas_report_json)
