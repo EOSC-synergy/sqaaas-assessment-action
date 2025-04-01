@@ -383,7 +383,7 @@ def main():
                 }
             },
             "data": {}
-        }
+        }}
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
