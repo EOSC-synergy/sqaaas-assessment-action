@@ -322,6 +322,7 @@ def main():
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
     if only:
+      sqaaas_report_json['meta']={'report_json_url':'https://raw.githubusercontent.com/eosc-synergy/testerpyo.assess.sqaaas/testingactions/.report/assessment_output.json'}
       sqaaas_report_json['badge']={
         "software": {
             "criteria": {
