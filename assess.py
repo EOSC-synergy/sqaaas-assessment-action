@@ -322,65 +322,24 @@ def main():
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
     if only:
-      sqaaas_report_json['meta']={'report_json_url':'https://raw.githubusercontent.com/eosc-synergy/testerpyo.assess.sqaaas/testingactions/.report/assessment_output.json'}
+      sqaaas_report_json['meta']={'report_json_url':'not a link'}
       sqaaas_report_json['badge']={
         "software": {
             "criteria": {
                 "bronze": {
-                    "to_fulfill": [
-                        "QC.Doc",
-                        "QC.Acc",
-                        "QC.Lic"
-                    ],
-                    "missing": [
-                        "QC.Doc",
-                        "QC.Lic"
-                    ],
-                    "fulfilled": [
-                        "QC.Acc"
-                    ]
+                    "to_fulfill": [],
+                    "missing": [],
+                    "fulfilled": []
                 },
                 "silver": {
-                    "to_fulfill": [
-                        "QC.Ver",
-                        "QC.Lic",
-                        "QC.Doc",
-                        "QC.Met",
-                        "QC.Acc"
-                    ],
-                    "missing": [
-                        "QC.Met",
-                        "QC.Ver",
-                        "QC.Lic",
-                        "QC.Doc"
-                    ],
-                    "fulfilled": [
-                        "QC.Acc"
-                    ]
+                    "to_fulfill": [],
+                    "missing": [],
+                    "fulfilled": []
                 },
                 "gold": {
-                    "to_fulfill": [
-                        "QC.Ver",
-                        "QC.Lic",
-                        "QC.Doc",
-                        "QC.Sec",
-                        "QC.Met",
-                        "QC.Acc",
-                        "QC.Uni",
-                        "QC.Sty"
-                    ],
-                    "missing": [
-                        "QC.Ver",
-                        "QC.Lic",
-                        "QC.Doc",
-                        "QC.Met",
-                        "QC.Uni"
-                    ],
-                    "fulfilled": [
-                        "QC.Acc",
-                        "QC.Sty",
-                        "QC.Sec"
-                    ]
+                    "to_fulfill": [],
+                    "missing": [],
+                    "fulfilled": []
                 }
             },
             "data": {}
