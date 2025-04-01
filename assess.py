@@ -321,6 +321,68 @@ def main():
 
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
+    sqaaas_report_json['badge']={
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Lic"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Lic"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Ver",
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Met",
+                        "QC.Acc"
+                    ],
+                    "missing": [
+                        "QC.Met",
+                        "QC.Ver",
+                        "QC.Lic",
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Ver",
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Sec",
+                        "QC.Met",
+                        "QC.Acc",
+                        "QC.Uni",
+                        "QC.Sty"
+                    ],
+                    "missing": [
+                        "QC.Ver",
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Met",
+                        "QC.Uni"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Sty",
+                        "QC.Sec"
+                    ]
+                }
+            },
+            "data": {}
+        }
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
