@@ -321,7 +321,8 @@ def main():
 
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
-    sqaaas_report_json['badge']={
+    if only:
+      sqaaas_report_json['badge']={
         "software": {
             "criteria": {
                 "bronze": {
@@ -390,8 +391,8 @@ def main():
         #   summary=({'only_one_atribute':only})
            
            
-        else:
-           summary = write_summary(sqaaas_report_json)
+        #else:
+        summary = write_summary(sqaaas_report_json)
         if summary:
             logger.debug(summary)
     else:
