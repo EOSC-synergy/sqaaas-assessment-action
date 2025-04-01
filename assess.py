@@ -327,7 +327,7 @@ def main():
         "software": {
             "criteria": {
                 "bronze": {
-                    "to_fulfill": [QC.Sty],
+                    "to_fulfill": ['QC.Sty'],
                     "missing": [],
                     "fulfilled": []
                 },
