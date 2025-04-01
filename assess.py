@@ -386,10 +386,10 @@ def main():
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
-        if only:
-           summary=({'only_one_atribute':only})
-           print('t')
-           print (only)
+        #if only:
+        #   summary=({'only_one_atribute':only})
+           
+           
         else:
            summary = write_summary(sqaaas_report_json)
         if summary:
