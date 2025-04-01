@@ -322,12 +322,12 @@ def main():
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
     if only:
-      sqaaas_report_json['meta']={'report_json_url':'not a link'}
+      sqaaas_report_json['meta']={'report_json_url':'not ad'}
       sqaaas_report_json['badge']={
         "software": {
             "criteria": {
                 "bronze": {
-                    "to_fulfill": [],
+                    "to_fulfill": [QC.Sty],
                     "missing": [],
                     "fulfilled": []
                 },
