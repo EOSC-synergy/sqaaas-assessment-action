@@ -329,24 +329,33 @@ def main():
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria)
     if only:
-      sqaaas_report_json['meta']={'report_json_url':'not ad'}
+      criteria_evaluated=sqaaas_report_json['report'].keys()
+      criteria_fulfilled=[]
+      criteria_missing=[]
+      for criteria in criteria_evaluated:
+          if sqaaas_report_json['report'][criteria]['valid']:
+             criteria_fulfilled.append(criteria)
+          else:
+             criteria_missing.append(criteria)
+          
+      sqaaas_report_json['meta']={'report_json_url':'not any full report'}
       sqaaas_report_json['badge']={
         "software": {
             "criteria": {
                 "bronze": {
-                    "to_fulfill": ['QC.Sty'],
-                    "missing": [],
-                    "fulfilled": ['QC.Sty']
+                    "to_fulfill": criteria_evaluated,
+                    "missing": criteria_missing,
+                    "fulfilled": criteria_fulfilled
                 },
                 "silver": {
-                    "to_fulfill": ['QC.Sty'],
-                    "missing": [],
-                    "fulfilled": ['QC.Sty']
+                    "to_fulfill": criteria_evaluated,
+                    "missing": criteria_missing,
+                    "fulfilled": criteria_fulfilled
                 },
                 "gold": {
-                    "to_fulfill": ['QC.Sty'],
-                    "missing": ['QC.Sty'],
-                    "fulfilled": []
+                    "to_fulfill": criteria_evaluated,
+                    "missing": criteria_missing,
+                    "fulfilled": criteria_fulfilled
                 }
             },
             "data": {}
