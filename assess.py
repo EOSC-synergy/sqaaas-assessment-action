@@ -210,13 +210,20 @@ def get_summary(sqaaas_report_json):
                 "Missing criteria found (%s) for %s badge, going one "
                 "level down" % (to_fulfill, badgeclass)
             )
-
-    badge_results = {
+    if only :
+        badge_results = {
+        "badge_sqaaas_md": badge_sqaaas_md,
+        
+        "to_fulfill": to_fulfill,
+        "next_level_badge": next_level_badge,
+        }
+    else:    
+      badge_results = {
         "badge_sqaaas_md": badge_sqaaas_md,
         "badge_shields_md": badge_shields_md,
         "to_fulfill": to_fulfill,
         "next_level_badge": next_level_badge,
-    }
+       }
     full_report_url = "/".join(
         [
             "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
