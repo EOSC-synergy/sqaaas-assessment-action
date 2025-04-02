@@ -336,16 +336,16 @@ def main():
                 "bronze": {
                     "to_fulfill": ['QC.Sty'],
                     "missing": [],
-                    "fulfilled": []
+                    "fulfilled": ['QC.Sty']
                 },
                 "silver": {
-                    "to_fulfill": [],
+                    "to_fulfill": ['QC.Sty'],
                     "missing": [],
-                    "fulfilled": []
+                    "fulfilled": ['QC.Sty']
                 },
                 "gold": {
-                    "to_fulfill": [],
-                    "missing": [],
+                    "to_fulfill": ['QC.Sty'],
+                    "missing": ['QC.Sty'],
                     "fulfilled": []
                 }
             },
