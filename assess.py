@@ -338,7 +338,7 @@ def main():
           else:
              criteria_missing.append(criteria)
           
-      sqaaas_report_json['meta']={'report_json_url':str(criteria_evaluated,only,criteria)}
+      sqaaas_report_json['meta']={'report_json_url':str(criteria_evaluated,criteria)}
       sqaaas_report_json['badge']={
         "software": {
             "criteria": {
