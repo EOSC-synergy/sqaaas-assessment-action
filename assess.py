@@ -363,8 +363,8 @@ def main():
     if sqaaas_report_json:
         logger.info("SQAaaS assessment data obtained. Creating summary..")
         logger.debug(sqaaas_report_json)
-        logger.debug('criteria evaluated: ',criteria_evaluated)
-        logger.debug('criteria intended: ',criteria_intended)
+        logger.debug('criteria evaluated: '+ str(criteria_evaluated))
+        logger.debug('criteria intended: '+ str(criteria_intended))
         #if only:
         #   summary=({'only_one_atribute':only})
            
