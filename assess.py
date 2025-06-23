@@ -168,7 +168,7 @@ def get_summary(sqaaas_report_json,only=False):
     report_results = []
     for criterion, criterion_data in sqaaas_report_json["report"].items():
         if only :
-          global criteria evaluated
+          global criteria_evaluated
           if not criterion in criteria_evaluated:
             continue
         for subcriterion, subcriterion_data in criterion_data["subcriteria"].items():
