@@ -163,6 +163,7 @@ def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria
 
 
 def get_summary(sqaaas_report_json,only=False):
+    logger.info("printing report: %s" % sqaaas_report_json )
     # Collect quality report data
     report_results = []
     for criterion, criterion_data in sqaaas_report_json["report"].items():
