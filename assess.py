@@ -331,7 +331,7 @@ def main():
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria_intended)
     if only:
       Intended_QC=[]
-      for QC in criteria_intended[criteria_workflow]:
+      for QC in criteria_intended['criteria_workflow']:
           Intended_QC.append(QC)
       
       criteria_evaluated=sqaaas_report_json['report'].keys()
