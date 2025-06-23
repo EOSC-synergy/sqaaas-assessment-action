@@ -337,7 +337,9 @@ def main():
       criteria_evaluated=sqaaas_report_json['report'].keys()
       if criteria_evaluated!=Intended_QC:
           logger.info("Intended QC different from evaluated criteria")
+          logger.info("before:" +str(criteria_evaluated))
           criteria_evaluated=Intended_QC
+          logger.info("After:" +str(criteria_evaluated))
       criteria_fulfilled=[]
       criteria_missing=[]
       for criteria in criteria_evaluated:
