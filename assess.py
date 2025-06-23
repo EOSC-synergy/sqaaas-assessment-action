@@ -232,7 +232,7 @@ def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
     full_report_url = "/".join(
         [
             "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
-            sqaaas_report_json["meta"]["report_json_url"],
+            sqaaas_report_json["meta"],
         ]
     )
     # Render & return report
