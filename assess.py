@@ -162,14 +162,14 @@ def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria
     return sqaaas_report_json
 
 
-def get_summary(sqaaas_report_json,only=False):
+def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
     logger.info("printing report: %s" % sqaaas_report_json )
     # Collect quality report data
     report_results = []
     for criterion, criterion_data in sqaaas_report_json["report"].items():
-        if only :
-          global criteria_evaluated
-          if not criterion in criteria_evaluated:
+        
+          
+        if only and not criterion in criteria_evaluated:
             continue
         for subcriterion, subcriterion_data in criterion_data["subcriteria"].items():
             for evidence in subcriterion_data["evidence"]:
@@ -245,8 +245,8 @@ def get_summary(sqaaas_report_json,only=False):
     )
 
 
-def write_summary(sqaaas_report_json,only=False):
-    summary = get_summary(sqaaas_report_json,only)
+def write_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
+    summary = get_summary(sqaaas_report_json,only,criteria,evaluated)
     if "GITHUB_STEP_SUMMARY" in os.environ:
         logger.info("Setting GITHUB_STEP_SUMMARY environment variable")
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
@@ -384,7 +384,7 @@ def main():
            
            
         #else:
-        summary = write_summary(sqaaas_report_json,only)
+        summary = write_summary(sqaaas_report_json,only,criteria_evaluated)
         if summary:
             logger.debug(summary)
     else:
