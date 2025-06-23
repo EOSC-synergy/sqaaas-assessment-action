@@ -246,7 +246,7 @@ def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
 
 
 def write_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
-    summary = get_summary(sqaaas_report_json,only,criteria,evaluated)
+    summary = get_summary(sqaaas_report_json,only,criteria_evaluated)
     if "GITHUB_STEP_SUMMARY" in os.environ:
         logger.info("Setting GITHUB_STEP_SUMMARY environment variable")
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
