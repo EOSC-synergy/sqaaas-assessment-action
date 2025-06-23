@@ -332,7 +332,7 @@ def main():
     if only:
       Intended_QC=[]
       for QC in criteria_intended['criteria_workflow']:
-          Intended_QC.append(QC)
+          Intended_QC.append(QC['id'])
       
       criteria_evaluated=sqaaas_report_json['report'].keys()
       if criteria_evaluated!=Intended_QC:
