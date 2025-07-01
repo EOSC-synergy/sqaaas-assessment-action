@@ -100,7 +100,9 @@ def sqaaas_request(method, path, payload={}):
 
     _error_code = None
     try:
+        logger.info('testing'+str(args))
         response = requests.request(**args)
+        
         # If the response was successful, no Exception will be raised
         response.raise_for_status()
     except requests.HTTPError as http_err:
