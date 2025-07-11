@@ -285,9 +285,9 @@ def get_criteria_only():
     only_criteria = os.environ.get("INPUT_CRITERIA_WORKFLOW_ONLY","")
     criteria_workflow = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
     try:
-         criteria_workflow = json.loads(criteria_workflow)
+         criteria_workflow = json.loads(criteria_workflow)))
     except:
-         criteria_workflow = json.loads(criteria_workflow.replace('\"','\\"'))
+         criteria_workflow = json.loads(json.dumps(eval(criteria_workflow)))
     only_criteria= ast.literal_eval(only_criteria)
     if only_criteria and criteria_workflow:
         logger.info("Evaluating only especified criteria")
