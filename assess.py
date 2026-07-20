@@ -73,7 +73,7 @@ shields.io-based badge: {{ badge_results.badge_shields_md }}
 """
 
 
-def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria_workflow={}):
+def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria_workflow={},credentials_id):
     payload = {
         "repo_code": {
             "repo": repo,
@@ -82,6 +82,8 @@ def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria
     }
     if criteria_only:
         payload["criteria_workflow"]=criteria_workflow["criteria_workflow"]
+    if credentials_id:
+        payload["credentials_id"]=credentials_id
     if step_tools:
         for criterion, step_tools in step_tools.items():
             payload["criteria_workflow"] = [{"id": criterion, "tools": step_tools}]
@@ -116,7 +118,7 @@ def sqaaas_request(method, path, payload={}):
         sys.exit(_error_code)
 
 
-def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria_workflow= {}):
+def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria_workflow= {},credentials_id={}):
     pipeline_id = None
     action = "create"
     sqaaas_report_json = {}
