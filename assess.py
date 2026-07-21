@@ -287,7 +287,7 @@ def get_criteria_only():
     credentials_id = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
     try:
          criteria_workflow = json.loads(criteria_workflow)
-        only_criteria= ast.literal_eval(only_criteria)
+         only_criteria= ast.literal_eval(only_criteria)
     except:
          try:
              criteria_workflow = json.loads(json.dumps(eval(criteria_workflow)))
