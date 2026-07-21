@@ -232,12 +232,15 @@ def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
         "next_level_badge": next_level_badge,
        }
     logger.info(sqaaas_report_json["meta"])
-    full_report_url = "/".join(
-        [
-            "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
-            sqaaas_report_json["meta"],
+    try:
+       full_report_url = "/".join(
+          [
+             "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
+             sqaaas_report_json["meta"]['report_json_url'],
         ]
-    )
+        )
+    except:
+        
     # Render & return report
     template = jinja2.Environment().from_string(SUMMARY_TEMPLATE)
     return template.render(
