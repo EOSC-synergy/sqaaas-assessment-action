@@ -37,6 +37,6 @@ runs:
     - ${{ inputs.repo }}
     - ${{ inputs.branch }}
     - ${{ inputs.qc_uni_steps }}
-    - ${{ inputs.credentials}}
+    - ${{ inputs.credentials_id}}
     - ${{ inputs.criteria_workflow_only}}
     - ${{ inputs.explicit_criteria_workflow}}
