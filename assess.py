@@ -128,7 +128,7 @@ def run_assessment(repo, branch=None, step_tools=[],only_criteria=False,criteria
     while keep_trying:
         logger.info(f"Performing {action} on pipeline {pipeline_id}")
         if action in ["create"]:
-            payload = json.loads(create_payload(repo, branch, step_tools,only_criteria,criteria_workflow))
+            payload = json.loads(create_payload(repo, branch, step_tools,only_criteria,criteria_workflow,credentials_id))
             logging.debug("Using payload: %s" % payload)
             if only_criteria:
                 response = sqaaas_request("post", "pipeline/assessment?run_criteria_workflow_only=True", payload=payload)
