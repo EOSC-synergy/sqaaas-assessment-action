@@ -356,12 +356,14 @@ def main():
 
     # Run assessment
     sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria_intended)
+    criteria_evaluated=sqaaas_report_json['report'].keys()
+
     if only:
       Intended_QC=[]
       for QC in criteria_intended['criteria_workflow']:
           Intended_QC.append(QC['id'])
       
-      criteria_evaluated=sqaaas_report_json['report'].keys()
+      #criteria_evaluated=sqaaas_report_json['report'].keys()
       if criteria_evaluated!=Intended_QC:
           logger.info("Intended QC different from evaluated criteria")
           logger.info("before:" +str(criteria_evaluated))
@@ -402,9 +404,8 @@ def main():
         logger.debug(sqaaas_report_json)
         logger.debug('criteria evaluated: '+ str(criteria_evaluated))
         logger.debug('criteria intended: '+ str(criteria_intended))
-        #if only:
-        #   summary=({'only_one_atribute':only})
-           
+        if only:
+             logger.debug('criteria intended: '+ str(criteria_intended))           
            
         #else:
         summary = write_summary(sqaaas_report_json,only,criteria_evaluated)
