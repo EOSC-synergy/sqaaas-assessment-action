@@ -236,10 +236,16 @@ def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
        full_report_url = "/".join(
           [
              "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
-             sqaaas_report_json["meta"]['report_json_url'],
+             sqaaas_report_json["meta"],
         ]
         )
     except:
+       full_report_url = "/".join(
+          [
+             "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
+             sqaaas_report_json["meta"]['report_json_url'],
+        ]
+        )
         
     # Render & return report
     template = jinja2.Environment().from_string(SUMMARY_TEMPLATE)
