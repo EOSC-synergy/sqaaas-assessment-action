@@ -231,6 +231,7 @@ def get_summary(sqaaas_report_json,only=False,criteria_evaluated=[]):
         "to_fulfill": to_fulfill,
         "next_level_badge": next_level_badge,
        }
+    logger.info(sqaaas_report_json["meta"])
     full_report_url = "/".join(
         [
             "https://sqaaas.eosc-synergy.eu/#/full-assessment/report",
