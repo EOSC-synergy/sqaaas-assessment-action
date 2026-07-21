@@ -283,7 +283,7 @@ def get_repo_data():
 
     return (repo, branch)
 
-def get_credentials_id():
+def get_criteria_only():
     credentials_id = os.environ.get("INPUT_EXPLICIT_CRITERIA_WORKFLOW","")
     try:
          criteria_workflow = json.loads(criteria_workflow)
@@ -297,7 +297,7 @@ def get_credentials_id():
     return(only_criteria,criteria_workflow)
 
 
-def get_criteria_only():
+def get_credentials_id():
     credentials_id = os.environ.get("INPUT_CREDENTIALS_ID","")
     try:
          credentials_id = json.loads(credentials_id)
