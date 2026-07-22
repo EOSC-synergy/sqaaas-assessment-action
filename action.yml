@@ -19,7 +19,7 @@ inputs:
   qc_uni_steps:
     description: space-separated list of steps for unit testing (QC.Uni) quality criterion (composed with sqaaas-step-action)
     required: false
-  credentials:
+  credentials_id:
     description: JSON dict that contains username and password/token for evaluating private rpositories
   criteria_workflow_only:
     description: true or false depending on whether you only want to trigger specified criteria workflow
