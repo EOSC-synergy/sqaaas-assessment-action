@@ -85,7 +85,7 @@ def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria
     if credentials_id:
         if isinstance(credentials_id, dict) and set(credentials_id.keys()) == {"credentials_id"}:
             credentials_id = credentials_id["credentials_id"]
-        payload["credentials_id"]=credentials_id
+        payload['repo_code']["credentials_id"]=credentials_id
     if step_tools:
         for criterion, step_tools in step_tools.items():
             payload["criteria_workflow"] = [{"id": criterion, "tools": step_tools}]
