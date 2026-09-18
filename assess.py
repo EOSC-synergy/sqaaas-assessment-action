@@ -365,7 +365,7 @@ def main():
     step_tools = get_custom_steps()
 
     # Run assessment
-    sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria_intended)
+    sqaaas_report_json = run_assessment(repo=repo, branch=branch, step_tools=step_tools,only_criteria=only,criteria_workflow=criteria_intended,credentials_id=credentials_id)
     criteria_evaluated=sqaaas_report_json['report'].keys()
 
     if only:
