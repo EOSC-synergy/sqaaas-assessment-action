@@ -83,6 +83,8 @@ def create_payload(repo, branch=None, step_tools=[],criteria_only=False,criteria
     if criteria_only:
         payload["criteria_workflow"]=criteria_workflow["criteria_workflow"]
     if credentials_id:
+        if isinstance(credentials_id, dict) and set(credentials_id.keys()) == {"credentials_id"}:
+            credentials_id = credentials_id["credentials_id"]
         payload["credentials_id"]=credentials_id
     if step_tools:
         for criterion, step_tools in step_tools.items():
